@@ -1,7 +1,7 @@
 class BTW:
     def __init__(self, message: str, humanize_index=False):
         self.initial_message = message
-        self.table = [message]
+        self.table = []
         self.fee = 1 if humanize_index else 0
         self._fill_table()
 
@@ -12,10 +12,9 @@ class BTW:
         message = self.initial_message
         for _ in range(len(self.initial_message)):
             message = message[1:] + message[0]
-            if message == self.initial_message:
-                break
             self.table.append(message)
         self.table.sort()
+        print(self.table)
 
     def _get_initial_message_index(self):
         return self.table.index(self.initial_message) + self.fee
